@@ -11,9 +11,13 @@ More practice:
 If you have figured out the O(n) solution, try coding another solution using the divide and conquer approach, which is more subtle.*/
 
 public class MaximumSubarray {
-  
+  public static void main(String[] args) {
+    int [] a = {1,-2,3,10,-4,7,2,-5};
+    int [] b = {-2,1,-3,4,-1,2,1,-5,4};
+    System.out.println(maxSubArray(b));
+  }
   //java solution, O(n), but seems like not accepted by Leetcode, need to be improved
-  public int maxSubArray(int[] nums) {
+  public static int maxSubArray(int[] nums) {
     int maxSum = 0;
     int sum = 0;
     int flag = 0;
