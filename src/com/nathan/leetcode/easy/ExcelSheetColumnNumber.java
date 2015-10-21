@@ -15,7 +15,22 @@ For example:
     AB -> 28 */
 
 public class ExcelSheetColumnNumber {
-  public int titleToNumber(String s) {
+  
+  public static void main(String[] args) {
     
+    System.out.println(titleToNumber("ABS"));
+    
+  }
+  
+  //need to add validation for non-letter
+  public static int titleToNumber(String s) {
+    char [] charArray = s.toCharArray();
+    int num = 0;
+    int j = 0;
+    for(int i = charArray.length-1; i >=0; i--) {
+      num += (int) ((charArray[i] - 'A' + 1) * Math.pow(26, j++)); 
+    }
+    
+    return num;
   }
 }
