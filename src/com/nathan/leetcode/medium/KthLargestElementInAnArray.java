@@ -13,7 +13,7 @@ You may assume k is always valid, 1 ¡Ü k ¡Ü array's length.
 */public class KthLargestElementInAnArray {
   
   public static void main(String[] args) {
-    int [] nums = {1,2,4,4,2,1};
+    int [] nums = {1,3,4,5,2,1};
     
     System.out.println(findKthLargestElement(nums, 3));
     System.out.println(findKthLargestElement2(nums, 3));
@@ -23,6 +23,7 @@ You may assume k is always valid, 1 ¡Ü k ¡Ü array's length.
   //O(n) Quick Select
   public static int findKthLargestElement(int[] nums, int k) {
 
+    shuffle(nums);
     int lo = 0;
     int hi = nums.length - 1;
     k = nums.length - k;
@@ -40,6 +41,19 @@ You may assume k is always valid, 1 ¡Ü k ¡Ü array's length.
     return nums[k];
 
   }
+
+    
+  //knuth shuffle
+  private static void shuffle(int[] nums) {
+    
+    for(int i = 0 ; i < nums.length; i++) {
+      int randomNum = i + (int)Math.random() * (nums.length-i);
+      exchange(nums, nums[i], nums[randomNum]);
+    }
+    
+    
+  }
+
 
   public static int partition(int[] nums, int lo, int hi) {
     int i = lo, j = hi +1;
