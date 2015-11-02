@@ -1,6 +1,5 @@
 package com.nathan.leetcode.easy;
 
-import java.util.List;
 
 import com.nathan.leetcode.utils.ListNode;
 
