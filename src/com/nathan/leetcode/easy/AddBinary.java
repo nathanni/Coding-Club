@@ -10,7 +10,7 @@ Return "100".*/
 
 public class AddBinary {
   public static void main(String[] args) {
-    System.out.println(addBinary("0", "0"));
+    System.out.println(addBinary("111", "1"));
 
   }
   public static String addBinary(String a, String b) {
@@ -25,7 +25,6 @@ public class AddBinary {
       sb.append(cNum%2);
       carry = cNum / 2;
     }
-    
     return (carry == 1)?sb.append(1).reverse().toString():sb.reverse().toString();
   }
 }
