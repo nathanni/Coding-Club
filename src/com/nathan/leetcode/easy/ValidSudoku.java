@@ -38,7 +38,7 @@ public class ValidSudoku {
         checkerForColumn |= 1 << posForColumn;
 
 
-        //Òª¸ãÇå³þ i j ºÍboxÀï i j µÄ¹ØÏµ£¬ ÄÑµãÔÚÕâ
+       //è¦æžæ¸…æ¥š i j å’Œboxé‡Œ i j çš„å…³ç³»ï¼Œ éš¾ç‚¹åœ¨è¿™
         int boxRowIndex = i / 3 * 3;
         int boxColumnIndex = i % 3 * 3;
         int posForBox = board[boxRowIndex + j / 3][boxColumnIndex + j % 3] - '1';
