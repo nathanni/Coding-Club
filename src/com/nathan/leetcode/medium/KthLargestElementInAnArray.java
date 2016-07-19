@@ -57,29 +57,29 @@ You may assume k is always valid, 1 ≤ k ≤ array's length.
 
   public static int partition(int[] nums, int lo, int hi) {
     int i = lo, j = hi +1;
-    
+
     while(true) {
-      
+
       while(less(nums[++i], nums[lo])) {
-        if(i >= hi) 
+        if(i >= hi)
           break;
       }
-      
+
       while(less(nums[lo], nums[--j])) {
         if(j <= lo) {
           break;
         }
       }
-      
+
       if(i >= j)
         break;
-      
+
       exchange(nums, i, j);
 
     }
-    
+
     exchange(nums, lo, j);
-    
+
     return j;
   }
   

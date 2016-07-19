@@ -1,39 +1,69 @@
 package com.nathan.leetcode.utils;
 
+
 public class QuickSort {
   
   public static void main(String[] args) {
-    int [] a= {2,1,5};
-    partition(a, 0, 2);
+    int [] a= {7,123,6,5,2,1,2,0,-123,22222,2,1,5,234,1,23,6,-1,321};
+    sort(a);
     U.print(a);
+
   }
-  
-  
-  public static void sort(int [] a) {
-    
+
+  public static void sort(int [] nums) {
+    if(nums == null || nums.length == 0) return;
+
+    shuffle(nums);
+    quickSort(nums, 0, nums.length - 1);
+
   }
-  
-  public static int partition(int [] a, int lo, int hi ) {
-    int i = lo;
-    int j = hi + 1;
-    
-    while(true) {
-      
-      while(U.less(a[++i], a[lo])) {
-        if(i == hi) break;
+
+  public static void quickSort(int [] nums, int lo, int hi) {
+    if (lo >= hi) return;
+
+    int j = partition(nums, lo, hi);
+
+    quickSort(nums, lo, j - 1);
+    quickSort(nums, j + 1, hi);
+
+  }
+
+  public static int partition (int [] nums, int lo, int hi) {
+
+    int pivot = nums[lo];
+
+    while (lo < hi) {
+      while (lo < hi && nums[hi] >= pivot) {
+        hi--;
       }
-      
-      while(U.less(a[lo], a[--j])) {
-        if(j == lo) break;
+      nums[lo] = nums[hi];
+
+      while (lo < hi && nums[lo] <= pivot) {
+        lo++;
       }
-      
-      if (i >= j) break;
-      
-      U.exch(a, i, j);
+
+      nums[hi] = nums[lo];
+
+
+
     }
-    
-    U.exch(a, lo, j);
-    return j;
+
+    nums[lo] = pivot;
+
+    return lo;
+
+
+  }
+
+
+  public static void shuffle(int [] nums) {
+    for (int i = 0; i < nums.length; i++) {
+      int random = i + (int)(Math.random() * (nums.length - i));
+
+      int temp = nums[i];
+      nums[i] = nums[random];
+      nums[random] = temp;
+    }
   }
 
 }
