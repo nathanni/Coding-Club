@@ -1,71 +1,56 @@
 package com.nathan.leetcode;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
-/**
- * Created by Nathan on 5/16/2016.
- */
 public class Test {
 
     public static void main(String[] args) {
-
-
-        int []matrix = {1,2,7,8,5};
-
         Test test = new Test();
+        int[] arr = {2, 1, 1, 0};
 
-        test.intervalMinNumber(matrix);
+        List<Integer> result = test.countSmaller(arr);
+        for (Integer i : result) {
+            System.out.println(i);
+        }
     }
 
-    private int [] nums;
-    private int [] tree;
-    public ArrayList<Integer> intervalMinNumber(int[] A) {
-        // write your code here
-        ArrayList<Integer> result = new ArrayList<>();
-        if (A == null || A.length == 0) {
-            return result;
+
+    public List<Integer> countSmaller(int[] nums) {
+
+
+
+        Integer[] arr = new Integer[nums.length];
+        List<Integer> sorted = new ArrayList<>();
+
+
+        for (int i = nums.length - 1; i >= 0; i--) {
+            int index = findIndex(sorted, nums[i]);
+            sorted.add(index, nums[i]);
+            arr[i] = index;
         }
+        return Arrays.asList(arr);
+    }
 
-        tree = new int[A.length + 1];
-        nums = A;
+    public int findIndex(List<Integer> sorted, int target) {
+        int start = 0, end = sorted.size() - 1;
 
+        while (start + 1 < end) {
+            int mid = start + (end - start) / 2;
 
-        for (int i = 1; i < tree.length; i++) {
-
-            tree[i] = Integer.MAX_VALUE;
-
-            for (int j = i - lowbit(i); j < i; j++) {
-                tree[i] = Math.min(tree[i], A[j]);
+            if (sorted.get(mid) >= target) {
+                end = mid;
+            } else {
+                start = mid;
             }
         }
 
-//        for (Interval query : queries) {
-//            int num = Math.min(min(query.start), min(query.end));
-//            result.add(num);
-//        }
+        if (sorted.get(start) >= target) return start;
+        else if (sorted.get(end) >= target) return end;
+        else return end + 1;
 
-        return result;
+
     }
 
-    public void update(int index, int val) {
-
-        nums[index] = val;
-
-        for (int i = index + 1; i < tree.length; i += lowbit(i)) {
-            tree[i] = Math.min(tree[i], val);
-        }
-    }
-
-    public int min(int index) {
-        int ret = 0;
-        for (int i = index + 1; i > 0; i -= lowbit(i)) {
-            ret = Math.min(ret, tree[i]);
-        }
-
-        return ret;
-    }
-
-    public int lowbit(int x) {
-        return x & -x;
-    }
 }
