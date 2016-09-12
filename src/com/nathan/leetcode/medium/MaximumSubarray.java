@@ -5,9 +5,9 @@ package com.nathan.leetcode.medium;
 For example, given the array [−2,1,−3,4,−1,2,1,−5,4],
 the contiguous subarray [4,−1,2,1] has the largest sum = 6.
 
-click to show more practice.
+click to show more bittiger.
 
-More practice:
+More bittiger:
 If you have figured out the O(n) solution, try coding another solution using the divide and conquer approach, which is more subtle.*/
 
 public class MaximumSubarray {

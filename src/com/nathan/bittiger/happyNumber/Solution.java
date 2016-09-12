@@ -1,4 +1,4 @@
-package com.nathan.practice.happyNumber;
+package com.nathan.bittiger.happyNumber;
 
 /**
  * Created by nni on 9/12/2016.

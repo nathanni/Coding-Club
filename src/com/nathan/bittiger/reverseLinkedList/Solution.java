@@ -1,4 +1,4 @@
-package com.nathan.practice.reverseLinkedList;
+package com.nathan.bittiger.reverseLinkedList;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -54,7 +54,7 @@ public class Solution {
 
 
     public static void main(String[] args) throws FileNotFoundException {
-        Scanner sc = new Scanner(new File("src/com/nathan/practice/reverseLinkedList/input"));
+        Scanner sc = new Scanner(new File("src/com/nathan/bittiger/reverseLinkedList/input"));
 
         int n = sc.nextInt();
         Node dummy = new Node(-1);
