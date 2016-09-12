@@ -1,54 +1,61 @@
 package com.nathan.leetcode;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-
 public class Test {
 
     public static void main(String[] args) {
+
         Test test = new Test();
-        int[] arr = {2, 1, 1, 0};
 
-        List<Integer> result = test.countSmaller(arr);
-        for (Integer i : result) {
-            System.out.println(i);
-        }
+
+        System.out.println(test.reversePairs(new int[]{2, 4, 1, 3, 5}));
+
     }
 
-
-    public List<Integer> countSmaller(int[] nums) {
-
-
-
-        Integer[] arr = new Integer[nums.length];
-        List<Integer> sorted = new ArrayList<>();
-
-
-        for (int i = nums.length - 1; i >= 0; i--) {
-            int index = findIndex(sorted, nums[i]);
-            sorted.add(index, nums[i]);
-            arr[i] = index;
+    public long reversePairs(int[] A) {
+        if (A == null || A.length == 0) {
+            return (long)0;
         }
-        return Arrays.asList(arr);
+
+        long result = reverseHelper(A, 0, A.length - 1);
+        return result;
     }
 
-    public int findIndex(List<Integer> sorted, int target) {
-        int start = 0, end = sorted.size() - 1;
+    private long reverseHelper(int[] nums, int start, int end) {
+        if (start >= end) {
+            return (long)0;
+        }
+        int middle = start + (end - start) / 2;
 
-        while (start + 1 < end) {
-            int mid = start + (end - start) / 2;
+        long pairsLeft = reverseHelper(nums, start, middle);
+        long pairsRight = reverseHelper(nums, middle + 1, end);
+        return mergePairs(nums, start, middle, end) + pairsLeft + pairsRight;
+    }
 
-            if (sorted.get(mid) >= target) {
-                end = mid;
+    private long mergePairs(int[] nums, int start, int middle, int end) {
+        int pairs = 0;
+        int left = start;
+        int right = middle + 1;
+
+        int[] temp = new int[nums.length];
+
+        for (int i = start; i <= end; i++) {
+            temp[i] = nums[i];
+        }
+
+
+        for (int k = start; k <= end; k++) {
+            if (left > middle) nums[k] = temp[right++];
+            else if (right > end) nums[k] = temp[left++];
+            else if (temp[left] > temp[right]) {
+                pairs += middle - left + 1;
+                nums[k] = temp[right++];
             } else {
-                start = mid;
+                nums[k] = temp[left++];
             }
         }
 
-        if (sorted.get(start) >= target) return start;
-        else if (sorted.get(end) >= target) return end;
-        else return end + 1;
+        return pairs;
+
 
 
     }
