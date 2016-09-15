@@ -75,6 +75,7 @@ public class Solution {
         //reverseIteration(head).print();
         System.out.println("reverse recursion: ");
         reverseRecursion(head).print();
+        sc.close();
     }
 
 }
