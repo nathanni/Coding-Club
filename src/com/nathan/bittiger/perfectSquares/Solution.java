@@ -9,6 +9,20 @@ import java.util.Scanner;
  */
 class PerfectSquares {
 
+
+    public int dfs(int n) {
+        if (n <= 0) return 0;
+
+        int res = Integer.MAX_VALUE;
+        for (int i = n; i > 0; i--) {
+            if (i * i > n) continue;
+            res = Math.min(res, 1 + dfs(n - i *i));
+        }
+
+        return res;
+    }
+
+
     public int least(int n) {
         if (n <= 0) return 0;
 
@@ -40,7 +54,7 @@ public class Solution {
 
         while (n != -1) {
             long start = System.nanoTime();
-            System.out.print(n +"'s least perfect squares is " +perfectSquares.least(n));
+            System.out.print(n +"'s least perfect squares is " +perfectSquares.dfs(n));
             long end = System.nanoTime();
             System.out.println("   cost time: " + (end - start) / 1000000 + "ms");
             n = sc.nextInt();
