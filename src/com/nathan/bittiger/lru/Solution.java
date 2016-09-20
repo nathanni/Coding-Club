@@ -20,16 +20,18 @@ class LRUCache {
         public Node(int key, int val) {
             this.key = key;
             this.val = val;
-            this.prev = this.next = null;
+            this.prev = null;
+            this.next = null;
         }
+
     }
 
-    private HashMap<Integer, Node> map;
     private int capacity;
+    private HashMap<Integer, Node> map;
     private Node head;
     private Node tail;
 
-    public LRUCache(int capacity){
+    public LRUCache(int capacity) {
         this.capacity = capacity;
         map = new HashMap<>();
         head = new Node(-1, -1);
@@ -43,16 +45,9 @@ class LRUCache {
 
         Node node = map.get(key);
 
-        //detach
-        node.prev.next = node.next;
-        node.next.prev = node.prev;
-
-        int ret = node.val;
-
-        moveToTail(node);
-
-        return ret;
-
+        detatch(node);
+        attach(node);
+        return node.val;
     }
 
     public void set(int key, int val) {
@@ -61,30 +56,29 @@ class LRUCache {
             return;
         }
 
-        if (map.size() == capacity) {
-            map.remove(head.next);
-            head.next = head.next.next;
-            head.next.prev = head;
+        if (this.capacity == map.size()) {
+            Node node = head.next;
+            map.remove(node.key);
+            detatch(node);
         }
 
         Node node = new Node(key, val);
-
         map.put(key, node);
-        moveToTail(node);
-
-        return;
-
-
-
-
+        attach(node);
     }
 
-    public void moveToTail(Node node) {
+    public void detatch(Node node) {
+        node.prev.next = node.next;
+        node.next.prev = node.prev;
+    }
+
+    public void attach(Node node) {
+        tail.prev.next = node;
+        node.next = tail;
         node.prev = tail.prev;
         tail.prev = node;
-        node.prev.next = node;
-        node.next = tail;
     }
+
 
 
 }
@@ -106,7 +100,7 @@ class LRUCache2<K, V> extends LinkedHashMap<K, V> {
 public class Solution {
 
     public static void main(String[] args) throws FileNotFoundException {
-        Scanner sc = new Scanner(new File("input"));
+        Scanner sc = new Scanner(new File("src/com/nathan/bittiger/lru/input"));
 
         int n = sc.nextInt();
 
