@@ -22,7 +22,7 @@ class Node {
 class Finder {
     Node findFromRoot(Node a, Node b, Node root) {
 
-        //ending case 背答案
+        //ending case
         if (root == null || root == a || root == b) {
             return root;
         }
