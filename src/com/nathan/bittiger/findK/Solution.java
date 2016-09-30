@@ -1,4 +1,4 @@
-package com.nathan.findK;
+package com.nathan.bittiger.findK;
 
 import java.io.File;
 import java.io.FileNotFoundException;

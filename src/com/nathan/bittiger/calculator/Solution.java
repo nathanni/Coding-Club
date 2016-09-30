@@ -1,5 +1,8 @@
 package com.nathan.bittiger.calculator;
 
+import javax.script.ScriptEngine;
+import javax.script.ScriptEngineManager;
+import javax.script.ScriptException;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Deque;
@@ -91,11 +94,16 @@ class Calculator {
         if (c == '*' || c == '/') return base + 2;
         return Integer.MIN_VALUE;
     }
+
+    public int eval2(String equation) throws ScriptException {
+        ScriptEngine scriptEngine = new ScriptEngineManager().getEngineByName("JavaScript");
+        return (int) scriptEngine.eval(equation);
+    }
 }
 
 
 public class Solution {
-    public static void main(String[] args) throws FileNotFoundException {
+    public static void main(String[] args) throws FileNotFoundException, ScriptException {
 
         Scanner sc = new Scanner(new File("src/com/nathan/bittiger/calculator/input"));
 
@@ -104,7 +112,7 @@ public class Solution {
 
         while (!s.equals("END")) {
             Calculator calculator = new Calculator();
-            System.out.println(calculator.eval(s));
+            System.out.println(calculator.eval2(s));
             s = sc.nextLine();
         }
 
