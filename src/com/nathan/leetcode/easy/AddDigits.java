@@ -10,7 +10,7 @@ Could you do it without any loop/recursion in O(1) runtime?
 
 Hint:
 
-A naive implementation of the above process is trivial. Could you come up with other methods?
+A naive implementation of the above process is trivial. Could you come up with others methods?
 What are all the possible results?
 How do they occur, periodically or randomly?
 You may find this Wikipedia article useful.  DIGITAL ROOT */

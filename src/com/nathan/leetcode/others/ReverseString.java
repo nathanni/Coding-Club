@@ -1,4 +1,4 @@
-package com.nathan.leetcode;
+package com.nathan.leetcode.others;
 
 /**
  * Created by Nathan on 5/5/2016.

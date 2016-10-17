@@ -2,7 +2,7 @@ package com.nathan.crackingcodinginterview.solutions.arraysandstrings;
 
 import java.util.Arrays;
 
-//1.3 Given two strings, write a method to decide if one is a permutation of the other.
+//1.3 Given two strings, write a method to decide if one is a permutation of the others.
 
 public class Q1_3_Permutaion {
 

@@ -1,4 +1,4 @@
-package com.nathan.crackingcodinginterview;
+package com.nathan.crackingcodinginterview.others;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -1,4 +1,4 @@
-package com.nathan.crackingcodinginterview;
+package com.nathan.crackingcodinginterview.others;
 
 /**
  * Created by nni on 5/12/2016.

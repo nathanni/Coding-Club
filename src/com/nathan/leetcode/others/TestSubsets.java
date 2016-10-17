@@ -1,4 +1,4 @@
-package com.nathan.leetcode;
+package com.nathan.leetcode.others;
 
 import java.util.ArrayList;
 import java.util.Arrays;

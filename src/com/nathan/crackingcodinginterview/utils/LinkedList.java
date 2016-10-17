@@ -1,4 +1,4 @@
-package com.nathan.crackingcodinginterview.solutions;
+package com.nathan.crackingcodinginterview.utils;
 
 
 
