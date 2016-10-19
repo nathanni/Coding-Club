@@ -1,8 +1,7 @@
 /.idea
 /Coding-Club.iml
 /bin
-
-/src/com/nathan/leetcode/Test.java
-/src/com/nathan/crackingcodinginterview/solutions/Test.java
-
+/src/com/nathan/leetcode/Test*
+/src/com/nathan/crackingcodinginterview/solutions/Test*
 /out/
+/src/com/nathan/Test*.java
