@@ -3,7 +3,7 @@ package com.nathan.multithreading.demo3;
 /**
  * Created by nni on 10/19/2016.
  */
-public class Sync {
+public class Sync extends Thread {
 
     private int count = 0;
 
@@ -13,7 +13,11 @@ public class Sync {
 
     public static void main(String[] args) {
         Sync sync = new Sync();
-        sync.doWork();
+        sync.start();
+    }
+
+    public void run() {
+        doWork();
     }
 
     public void doWork() {
