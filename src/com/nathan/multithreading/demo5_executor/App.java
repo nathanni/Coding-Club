@@ -1,4 +1,4 @@
-package com.nathan.multithreading.demo5;
+package com.nathan.multithreading.demo5_executor;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -43,8 +43,9 @@ public class App {
 
 
         System.out.println("All task submitted. ");
+        executor.shutdown(); // not immediately
+        try {
 
-        try {executor.shutdown(); // not immediately
             executor.awaitTermination(1, TimeUnit.DAYS);
         } catch (InterruptedException e) {
             e.printStackTrace();

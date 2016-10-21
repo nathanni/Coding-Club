@@ -1,4 +1,4 @@
-package com.nathan.multithreading.demo6;
+package com.nathan.multithreading.demo6_countdownlatch;
 
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.ExecutorService;

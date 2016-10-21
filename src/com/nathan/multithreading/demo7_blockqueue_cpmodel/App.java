@@ -1,4 +1,4 @@
-package com.nathan.multithreading.demo7;
+package com.nathan.multithreading.demo7_blockqueue_cpmodel;
 
 import java.util.Random;
 import java.util.concurrent.ArrayBlockingQueue;
