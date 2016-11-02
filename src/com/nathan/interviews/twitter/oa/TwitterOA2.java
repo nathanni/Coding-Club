@@ -1,4 +1,4 @@
-package com.nathan;
+package com.nathan.interviews.twitter.oa;
 
 /**
  * Created by nni on 11/1/2016.

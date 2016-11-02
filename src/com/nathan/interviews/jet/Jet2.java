@@ -1,4 +1,4 @@
-package com.nathan;
+package com.nathan.interviews.jet;
 
 import java.util.ArrayList;
 import java.util.LinkedList;

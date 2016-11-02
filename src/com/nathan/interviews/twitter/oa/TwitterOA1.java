@@ -1,4 +1,4 @@
-package com.nathan;
+package com.nathan.interviews.twitter.oa;
 import java.util.*;
 
 class TwitterOA1 {

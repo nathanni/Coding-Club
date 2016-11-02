@@ -1,4 +1,4 @@
-package com.nathan;
+package com.nathan.interviews.peak6;
 
 /**
  * Created by nni on 10/20/2016.

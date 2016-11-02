@@ -1,4 +1,4 @@
-package com.nathan;
+package com.nathan.interviews.jet;
 
 /**
  * Created by nni on 10/19/2016.

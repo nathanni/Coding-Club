@@ -1,4 +1,4 @@
-package com.nathan;
+package com.nathan.interviews.peak6;
 import java.util.Arrays;
 
 class CatchThemAll {
