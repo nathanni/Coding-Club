@@ -45,7 +45,7 @@ class LRUCache {
 
         Node node = map.get(key);
 
-        detatch(node);
+        detach(node);
         attach(node);
         return node.val;
     }
@@ -59,7 +59,7 @@ class LRUCache {
         if (this.capacity == map.size()) {
             Node node = head.next;
             map.remove(node.key);
-            detatch(node);
+            detach(node);
         }
 
         Node node = new Node(key, val);
@@ -67,9 +67,11 @@ class LRUCache {
         attach(node);
     }
 
-    public void detatch(Node node) {
+    public void detach(Node node) {
         node.prev.next = node.next;
         node.next.prev = node.prev;
+        node.prev = null;
+        node.next = null;
     }
 
     public void attach(Node node) {
