@@ -47,6 +47,7 @@ public class Shortest_Job_First {
             }
         });
 
+        //3。SJF这道题，如果用priorityqueue，要手动加载 priorityqueue 和 comparator包。
         while (!heap.isEmpty() || index < len) {
             if (!heap.isEmpty()) {
 
