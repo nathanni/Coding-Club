@@ -5,7 +5,7 @@ import java.util.Arrays;
 /**
  * Created by nni on 11/21/2016.
  */
-public class FourInteger {
+public class Four_Integer {
 
     public int[] solution(int A, int B, int C, int D) {
         int[] res = new int[4];
