@@ -1,44 +1,35 @@
 package com.nathan.multithreading.demo2;
 
-import java.util.Scanner;
-
 /**
  * Created by nni on 10/19/2016.
  */
 
 class Processor extends Thread {
-
-    private volatile boolean running = true;
-
-    public void run() {
+    public static int i ;
+    public static boolean running2 = true;
 
 
-        while (running) {
-            System.out.println("Hello");
+    public  void run() {
 
-            try {
-                Thread.sleep(100);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
+        while (running2) {
+            i++;
         }
     }
 
     public void shutdown() {
-        running = false;
+        running2 = false;
     }
 }
 
 public class Volatile {
-
-    public static void main(String[] args) {
+    public  static boolean running = true;
+    public static void main(String[] args) throws InterruptedException {
         Processor proc1 = new Processor();
         proc1.start();
 
         System.out.println("Press return to stop ...");
-        Scanner scanner = new Scanner(System.in);
-        scanner.nextLine();
 
+        Thread.sleep(1000);
         proc1.shutdown();
 
     }
