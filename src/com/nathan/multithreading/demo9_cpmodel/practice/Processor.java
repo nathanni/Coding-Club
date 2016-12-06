@@ -77,7 +77,7 @@ public class Processor {
 
         while (true) {
             synchronized (lock) {
-                if (list.size() == LIMIT) {
+                while (list.size() == LIMIT) {
                     try {
                         lock.wait();
                     } catch (InterruptedException e) {
@@ -86,7 +86,8 @@ public class Processor {
                 }
                 list.add(++val);
                 System.out.println("Produced: " + val + " Current List Size is: " + list.size());
-                lock.notify();
+                lock.notifyAll();
+                //lost wakeup
             }
         }
     }
@@ -104,7 +105,8 @@ public class Processor {
                 }
                 int val = list.removeFirst();
                 System.out.println("Consumed: " + val + " Current List Size is: " + list.size());
-                lock.notify();
+                lock.notifyAll();
+                //防止 lost wakeup
             }
             try {
                 Thread.sleep(random.nextInt(2000));
