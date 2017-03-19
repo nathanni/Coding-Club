@@ -37,30 +37,43 @@ public class DeadLockExample2 {
 
     public void f1() {
         try {
+//            lock1.lock();
+//            Thread.sleep(1000);
             aquireLocks(lock1, lock2);
-            lock2.lock(); //reentrant lock 是有count的, 加锁了几次就要解锁几次
-            System.out.println("hah1");
+
+
+//            lock1.lock(); //reentrant lock 是有count的, 加锁了几次就要解锁几次
+//            Thread.sleep(2000);
+//            lock2.lock();
+            //System.out.println("hah1");
             i++;
+            //f2();
         } catch (InterruptedException e) {
             e.printStackTrace();
+
         } finally {
             lock1.unlock();
             lock2.unlock();
-            lock2.unlock();
+//            lock1.unlock();
         }
     }
 
     public void f2() {
         try {
+            //lock2.lock();
             aquireLocks(lock1, lock2);
-            lock1.lock(); //reentrant lock 是有count的, 加锁了几次就要解锁几次
-            System.out.println("hah2");
+
+//            lock2.lock(); //reentrant lock 是有count的, 加锁了几次就要解锁几次
+//            Thread.sleep(2000);
+//            lock1.lock();
+           // System.out.println("hah2");
             i++;
+           // f1();
 
         } catch (InterruptedException e) {
             e.printStackTrace();
         } finally {
-            lock1.unlock();
+            //lock1.unlock();
             lock1.unlock();
             lock2.unlock();
         }

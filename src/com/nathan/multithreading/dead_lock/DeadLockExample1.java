@@ -10,17 +10,30 @@ public class DeadLockExample1 {
 
     public void f1() throws InterruptedException {
         synchronized (lock1) {
-            System.out.println("f1");
+
             Thread.sleep(1000);
-            f2();
+            lock1.wait();
+            synchronized (lock2) {
+                System.out.println("f1");
+                System.out.println("f11");
+            }
+
+
         }
     }
 
     private void f2() throws InterruptedException {
         synchronized (lock2) {
-            System.out.println("f2");
+
             Thread.sleep(1000);
-            f1();
+            synchronized (lock1) {
+                System.out.println("f2");
+                System.out.println("f22");
+                lock1.notify();
+            }
+//            lock1.notifyAll();
+//            lock2.wait();
+
         }
     }
 
