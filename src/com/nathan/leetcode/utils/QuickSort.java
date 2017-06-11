@@ -1,6 +1,8 @@
 package com.nathan.leetcode.utils;
 
 
+import java.util.Random;
+
 public class QuickSort {
   
   public static void main(String[] args) {
@@ -63,6 +65,16 @@ public class QuickSort {
       int temp = nums[i];
       nums[i] = nums[random];
       nums[random] = temp;
+    }
+  }
+
+  public void shuffle2(int[] nums) {
+    Random r = new Random();
+    for (int i = 0; i < nums.length; i++) {
+      int idx = i + r.nextInt(nums.length - i);
+      int temp = nums[i];
+      nums[i] = nums[idx];
+      nums[idx] = temp;
     }
   }
 
