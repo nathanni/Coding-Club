@@ -3,7 +3,7 @@ package com.nathan.multithreading.producer_consumer;
 /**
  * Created by nni on 12/6/2016.
  */
-public class Test {
+public class RunProducerConsumer {
 
     public static void main(String[] args) throws InterruptedException {
         ProducerConsumer producerConsumer = new ProducerConsumer(20);

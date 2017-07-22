@@ -2,6 +2,7 @@ package com.nathan.multithreading.producer_consumer;
 
 import java.util.LinkedList;
 import java.util.Random;
+import java.util.concurrent.atomic.AtomicInteger;
 import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
@@ -16,6 +17,7 @@ public class ProducerConsumer {
     private Lock lock;
     private Condition empty;
     private Condition full;
+    AtomicInteger item = new AtomicInteger();
     public ProducerConsumer(int size) {
         LIMIT = size;
         list = new LinkedList<>();
@@ -25,14 +27,14 @@ public class ProducerConsumer {
     }
 
     public void produce() {
-        int val = 0;
         while (true) {
             try {
                 lock.lock();
                 while (list.size() == LIMIT) {
                     full.await();
                 }
-                list.add(++val);
+                int val = item.getAndIncrement();
+                list.add(val);
                 System.out.println("Produced: " + val + " List Size: " + list.size());
                 empty.signal();
             } catch (InterruptedException e) {

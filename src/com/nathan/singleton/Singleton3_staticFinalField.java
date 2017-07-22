@@ -1,4 +1,4 @@
-package com.nathan.multithreading.singleton;
+package com.nathan.singleton;
 
 /**
  * Created by nni on 12/6/2016.

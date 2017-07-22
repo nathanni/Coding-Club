@@ -55,7 +55,7 @@ public class Scheduler {
 
         @Override
         public void run() {
-            while(running) {
+            while (running) {
                 synchronized (Scheduler.this) {
                     while (running && queue.isEmpty()) {
                         try {
@@ -91,12 +91,12 @@ public class Scheduler {
         scheduler.schedule(new Task(), 1000);
         scheduler.schedule(new Task(), 9000);
 
-        Thread.sleep(1300);
+        Thread.sleep(10000300);
         scheduler.stop();
     }
 }
 
-class Task implements Comparable<Task>{
+class   Task implements Comparable<Task> {
     private int id;
     private long timeToRun;
 
@@ -107,6 +107,7 @@ class Task implements Comparable<Task>{
     public void setTimeToRun(long timeToRun) {
         this.timeToRun = timeToRun;
     }
+
     public long getTimeToRun() {
         return timeToRun;
     }
